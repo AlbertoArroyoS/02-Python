@@ -43,12 +43,23 @@ cuadro_id.grid(row=0, column=1, padx=10, pady=10)
 cuadro_nombre=Entry(mi_frame)
 cuadro_nombre.grid(row=1, column=1, padx=10, pady=10)
 
+cuadro_apellido=Entry(mi_frame)
+cuadro_nombre.grid(row=2, column=1, padx=10, pady=10)
+
 cuadro_pass=Entry(mi_frame)
-cuadro_pass.grid(row=2, column=1, padx=10, pady=10)
+cuadro_pass.grid(row=3, column=1, padx=10, pady=10)
 cuadro_pass.config(show="*")
 
 cuadro_direccion=Entry(mi_frame)
-cuadro_direccion.grid(row=3, column=1, padx=10, pady=10)
+cuadro_direccion.grid(row=4, column=1, padx=10, pady=10)
+
+texto_comentario=Text(mi_frame, width=16, height=5)
+texto_comentario.grid(row=5, column=1, padx=10, pady=10)
+
+#Barra de desplazamiento vertical
+scroll_vert=Scrollbar(mi_frame, command=texto_comentario.yview)
+scroll_vert.grid(row=5, column=2, sticky="nsew")
+texto_comentario.config(yscrollcommand=scroll_vert.set)
 
 
 
