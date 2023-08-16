@@ -44,7 +44,7 @@ cuadro_nombre=Entry(mi_frame)
 cuadro_nombre.grid(row=1, column=1, padx=10, pady=10)
 
 cuadro_apellido=Entry(mi_frame)
-cuadro_nombre.grid(row=2, column=1, padx=10, pady=10)
+cuadro_apellido.grid(row=2, column=1, padx=10, pady=10)
 
 cuadro_pass=Entry(mi_frame)
 cuadro_pass.grid(row=3, column=1, padx=10, pady=10)
@@ -60,6 +60,47 @@ texto_comentario.grid(row=5, column=1, padx=10, pady=10)
 scroll_vert=Scrollbar(mi_frame, command=texto_comentario.yview)
 scroll_vert.grid(row=5, column=2, sticky="nsew")
 texto_comentario.config(yscrollcommand=scroll_vert.set)
+
+#Creacion de los label
+
+id_label=Label(mi_frame, text="Id:")
+id_label.grid(row=0, column=0, sticky="e", padx=10, pady=10)
+
+nombre_label=Label(mi_frame, text="Nombre:")
+nombre_label.grid(row=1, column=0, sticky="e", padx=10, pady=10)
+
+apellido_label=Label(mi_frame, text="Apellido:")
+apellido_label.grid(row=2, column=0, sticky="e", padx=10, pady=10)
+
+contraseña_label=Label(mi_frame, text="Contaseña:")
+contraseña_label.grid(row=3, column=0, sticky="e", padx=10, pady=10)
+
+direccion_label=Label(mi_frame, text="Direccion:")
+direccion_label.grid(row=4, column=0, sticky="e", padx=10, pady=10)
+
+comentarios_label=Label(mi_frame, text="Direccion:")
+comentarios_label.grid(row=5, column=0, sticky="e", padx=10, pady=10)
+
+
+#Botones CRUD de acceso directo abajo
+
+mi_frame_botones=Frame(root)
+mi_frame_botones.pack()
+
+boton_crear=Button(mi_frame_botones, text="Crear")
+boton_crear.grid(row=1, column=0, sticky="e", padx=10, pady=10)
+
+boton_leer=Button(mi_frame_botones, text="Leer")
+boton_leer.grid(row=1, column=1, sticky="e", padx=10, pady=10)
+
+boton_actualizar=Button(mi_frame_botones, text="Actualizar")
+boton_actualizar.grid(row=1, column=2, sticky="e", padx=10, pady=10)
+
+boton_borrar=Button(mi_frame_botones, text="Borrar")
+boton_borrar.grid(row=1, column=3, sticky="e", padx=10, pady=10)
+
+
+
 
 
 
