@@ -3,6 +3,7 @@
 from tkinter import *
 from tkinter import messagebox
 import sqlite3
+from Conexiones import *
 
 class CrudPOO(Frame):
 
@@ -91,7 +92,7 @@ class CrudPOO(Frame):
         #Creo la barra desplegable del principio del programa
 
         self.bbdd_menu=Menu(self.barra_menu, tearoff=0)
-        self.bbdd_menu.add_command(label="Conectar")
+        self.bbdd_menu.add_command(label="Conectar", command=conectar_BBDD)
         self.bbdd_menu.add_command(label="Salir")
 
         self.borrar_menu=Menu(self.barra_menu, tearoff=0)

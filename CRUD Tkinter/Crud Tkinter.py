@@ -1,4 +1,4 @@
-#1-CRUD en una clase solo
+#1-CRUD en un archivo solo
 
 from tkinter import *
 from tkinter import messagebox
