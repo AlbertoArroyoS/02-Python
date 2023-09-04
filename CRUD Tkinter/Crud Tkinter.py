@@ -136,7 +136,7 @@ bbdd_menu.add_command(label="Conectar", command=conectar_BBDD)
 bbdd_menu.add_command(label="Salir",command=salir_aplicacion)
 
 borrar_menu=Menu(barra_menu, tearoff=0)
-borrar_menu.add_command(label="Borrar", command=limpiar_entry)
+borrar_menu.add_command(label="Limpiar campos", command=limpiar_entry)
 
 crud_menu=Menu(barra_menu, tearoff=0)
 crud_menu.add_command(label="Crear", command=crear)
