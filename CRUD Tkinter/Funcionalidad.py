@@ -11,10 +11,6 @@ def salir_aplicacion(raiz):
         raiz.destroy()
 
 
-def limpiar_entry(campo1, campo2, campo3, campo4, campo5):
-    campo1.set("")
-    campo2.set("")
-    campo3.set("")
-    campo4.set("")
-    campo5.set("")
-    #texto_comentario.delete(1.0, END)
+def limpiar_entry(*args):
+    for campo in args:
+        campo.set("")
