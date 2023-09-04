@@ -47,19 +47,26 @@ def limpiar_entry():
     mi_direccion.set("")
     texto_comentario.delete(1.0, END)
 
-#Funcion para crear una BBDD
+#Funcion para crear una BBDD, consultas parametricas
 def crear():
     mi_conexion=sqlite3.connect("NOMBRE")
 
     mi_cursor=mi_conexion.cursor()
 
-    mi_cursor.execute("INSERT INTO DATOSUSUARIOS VALUES (NULL, '" + mi_nombre.get() +
+    #opcion vieja
+    '''mi_cursor.execute("INSERT INTO DATOSUSUARIOS VALUES (NULL, '" + mi_nombre.get() +
                         "','" + mi_apellido.get() + 
                         "','" + mi_pass.get() +
                         "','" + mi_direccion() + 
-                        "','" + texto_comentario.get("1.0", END)+ "')'")
+                        "','" + texto_comentario.get("1.0", END)+ "')'")'''
+
+    los_datos=mi_nombre.get(), mi_apellido.get(), mi_pass.get(), mi_direccion.get(), texto_comentario.get("1.0", END)
+
+    mi_cursor.execute("INSERT INTO DATOSUSUARIOS VALUES(NULL,?,?,?,?,?)",(los_datos))
 
     mi_conexion.commit()
+
+
 
     messagebox.showinfo("CRUD", "Registro insertado correctamente")
     
@@ -91,11 +98,15 @@ def actualizar():
 
     mi_cursor=mi_conexion.cursor()
 
-    mi_cursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE = '" + mi_nombre.get() +
+    '''mi_cursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE = '" + mi_nombre.get() +
                         "','" + mi_apellido.get() + 
                         "','" + mi_pass.get() +
                         "','" + mi_direccion() + 
-                        "','" + texto_comentario.get("1.0", END)+ "')'")
+                        "','" + texto_comentario.get("1.0", END)+ "')'")'''
+    
+    los_datos=mi_nombre.get(), mi_apellido.get(), mi_pass.get(), mi_direccion.get(), texto_comentario.get("1.0", END)
+
+    mi_cursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE=?, APELLIDO=?, PASSWORD=?, DIRECCION=?, COMENTARIOS=? WHERE ID=?" + mi_id.get(), (los_datos))
 
     mi_conexion.commit()
 
