@@ -19,12 +19,26 @@ class CrudPOO(Frame):
         self.mi_pass=StringVar()
         self.mi_direccion=StringVar()
 
+        #Barra de menu
+
+        self.barra_menu=Menu(root)
+        raiz.config(menu=self.barra_menu)
+
+
 
         super().__init__(raiz, width=300, height=300)
         self.master=raiz
-        self.pack
+        self.pack()
+
+        self.mi_frame_botones=Frame(raiz)
+        self.mi_frame_botones.pack()
 
         self.crear_widgets()
+
+        self.crear_barra_menu()
+
+        self.ubicar_botones()
+
 
     def crear_widgets(self):
 
@@ -69,35 +83,48 @@ class CrudPOO(Frame):
         self.direccion_label=Label(self, text="Direccion:")
         self.direccion_label.grid(row=4, column=0, sticky="e", padx=10, pady=10)
 
-        self.comentarios_label=Label(self, text="Direccion:")
+        self.comentarios_label=Label(self, text="Comentarios:")
         self.comentarios_label.grid(row=5, column=0, sticky="e", padx=10, pady=10)
 
     def crear_barra_menu(self):
 
         #Creo la barra desplegable del principio del programa
 
-        bbdd_menu=Menu(self.barra_menu, tearoff=0)
-        bbdd_menu.add_command(label="Conectar", command=conectar_BBDD)
-        bbdd_menu.add_command(label="Salir",command=salir_aplicacion)
+        self.bbdd_menu=Menu(self.barra_menu, tearoff=0)
+        self.bbdd_menu.add_command(label="Conectar")
+        self.bbdd_menu.add_command(label="Salir")
 
-        borrar_menu=Menu(self.barra_menu, tearoff=0)
-        borrar_menu.add_command(label="Limpiar campos", command=limpiar_entry)
+        self.borrar_menu=Menu(self.barra_menu, tearoff=0)
+        self.borrar_menu.add_command(label="Limpiar campos")
 
-        crud_menu=Menu(self.barra_menu, tearoff=0)
-        crud_menu.add_command(label="Crear", command=crear)
-        crud_menu.add_command(label="Leer", command=leer)
-        crud_menu.add_command(label="Actualizar", command=actualizar)
-        crud_menu.add_command(label="Borrar", command=eliminar)
+        self.crud_menu=Menu(self.barra_menu, tearoff=0)
+        self.crud_menu.add_command(label="Crear")
+        self.crud_menu.add_command(label="Leer")
+        self.crud_menu.add_command(label="Actualizar")
+        self.crud_menu.add_command(label="Borrar")
 
-        ayuda_menu=Menu(self.barra_menu, tearoff=0)
-        ayuda_menu.add_command(label="Licencia")
-        ayuda_menu.add_command(label="Acerca de")
+        self.ayuda_menu=Menu(self.barra_menu, tearoff=0)
+        self.ayuda_menu.add_command(label="Licencia")
+        self.ayuda_menu.add_command(label="Acerca de")
 
-        self.barra_menu.add_cascade(label="BBDD", menu=bbdd_menu)
-        self.barra_menu.add_cascade(label="Borrar", menu=borrar_menu)
-        self.barra_menu.add_cascade(label="CRUD", menu=crud_menu)
-        self.barra_menu.add_cascade(label="Ayuda", menu=ayuda_menu)
+        self.barra_menu.add_cascade(label="BBDD", menu=self.bbdd_menu)
+        self.barra_menu.add_cascade(label="Borrar", menu=self.borrar_menu)
+        self.barra_menu.add_cascade(label="CRUD", menu=self.crud_menu)
+        self.barra_menu.add_cascade(label="Ayuda", menu=self.ayuda_menu)
 
+    def ubicar_botones(self):
+
+        self.boton_crear=Button(self.mi_frame_botones, text="Crear")
+        self.boton_crear.grid(row=1, column=0, sticky="e", padx=10, pady=10)
+
+        self.boton_leer=Button(self.mi_frame_botones, text="Leer")
+        self.boton_leer.grid(row=1, column=1, sticky="e", padx=10, pady=10)
+
+        self.boton_actualizar=Button(self.mi_frame_botones, text="Actualizar")
+        self.boton_actualizar.grid(row=1, column=2, sticky="e", padx=10, pady=10)
+
+        self.boton_borrar=Button(self.mi_frame_botones, text="Borrar")
+        self.boton_borrar.grid(row=1, column=3, sticky="e", padx=10, pady=10)
 
 
 

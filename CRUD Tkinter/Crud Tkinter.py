@@ -205,7 +205,7 @@ contraseña_label.grid(row=3, column=0, sticky="e", padx=10, pady=10)
 direccion_label=Label(mi_frame, text="Direccion:")
 direccion_label.grid(row=4, column=0, sticky="e", padx=10, pady=10)
 
-comentarios_label=Label(mi_frame, text="Direccion:")
+comentarios_label=Label(mi_frame, text="Comentarios:")
 comentarios_label.grid(row=5, column=0, sticky="e", padx=10, pady=10)
 
 
