@@ -3,6 +3,7 @@ from tkinter import messagebox
 import sqlite3
 
 root=Tk()
+#HACER CONSULTAS PARAMETRICAS PAGINA 112
 
 #Creo conexion con la BBDD
 
@@ -46,6 +47,74 @@ def limpiar_entry():
     mi_direccion.set("")
     texto_comentario.delete(1.0, END)
 
+#Funcion para crear una BBDD
+def crear():
+    mi_conexion=sqlite3.connect("NOMBRE")
+
+    mi_cursor=mi_conexion.cursor()
+
+    mi_cursor.execute("INSERT INTO DATOSUSUARIOS VALUES (NULL, '" + mi_nombre.get() +
+                        "','" + mi_apellido.get() + 
+                        "','" + mi_pass.get() +
+                        "','" + mi_direccion() + 
+                        "','" + texto_comentario.get("1.0", END)+ "')'")
+
+    mi_conexion.commit()
+
+    messagebox.showinfo("CRUD", "Registro insertado correctamente")
+    
+#Funcion para leer 
+
+def leer():
+
+    mi_conexion=sqlite3.connect("NOMBRE")
+
+    mi_cursor=mi_conexion.cursor()
+
+    mi_cursor.execute("SELECT + FROM DATOSUSUARIOS WHERE ID=" + mi_id.get())
+
+    datos_usuario=mi_cursor.fetchall()
+
+    for usuario in datos_usuario:
+        mi_id.set(usuario[0])
+        mi_nombre.set(usuario[1])
+        mi_apellido.set(usuario[2])
+        mi_pass.set(usuario[3])
+        mi_direccion.set(usuario[4])
+        texto_comentario.insert(1.0, usuario[5])
+
+#Funcion para hacer el update
+
+def actualizar():
+
+    mi_conexion=sqlite3.connect("NOMBRE")
+
+    mi_cursor=mi_conexion.cursor()
+
+    mi_cursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE = '" + mi_nombre.get() +
+                        "','" + mi_apellido.get() + 
+                        "','" + mi_pass.get() +
+                        "','" + mi_direccion() + 
+                        "','" + texto_comentario.get("1.0", END)+ "')'")
+
+    mi_conexion.commit()
+
+    messagebox.showinfo("CRUD", "Registro actualizado correctamente")
+
+#Funcion para borrar un registro de la BBDD
+def eliminar():
+
+    mi_conexion=sqlite3.connect("NOMBRE")
+
+    mi_cursor=mi_conexion.cursor()
+
+    mi_cursor.execute("DELETE FROM DATOSUSUARIOS WHERE ID=" + mi_id.get())
+
+    mi_conexion.commit()
+
+    messagebox.showinfo("CRUD", "Registro borrado correctamente")
+
+
 
 #Creo la barra desplegable del principio del programa
 barra_menu=Menu(root)
@@ -59,10 +128,10 @@ borrar_menu=Menu(barra_menu, tearoff=0)
 borrar_menu.add_command(label="Borrar", command=limpiar_entry)
 
 crud_menu=Menu(barra_menu, tearoff=0)
-crud_menu.add_command(label="Crear")
-crud_menu.add_command(label="Leer")
-crud_menu.add_command(label="Actualizar")
-crud_menu.add_command(label="Borrar")
+crud_menu.add_command(label="Crear", command=crear)
+crud_menu.add_command(label="Leer", command=leer)
+crud_menu.add_command(label="Actualizar", command=actualizar)
+crud_menu.add_command(label="Borrar", command=eliminar)
 
 ayuda_menu=Menu(barra_menu, tearoff=0)
 ayuda_menu.add_command(label="Licencia")
@@ -132,16 +201,16 @@ comentarios_label.grid(row=5, column=0, sticky="e", padx=10, pady=10)
 mi_frame_botones=Frame(root)
 mi_frame_botones.pack()
 
-boton_crear=Button(mi_frame_botones, text="Crear")
+boton_crear=Button(mi_frame_botones, text="Crear", command=crear)
 boton_crear.grid(row=1, column=0, sticky="e", padx=10, pady=10)
 
-boton_leer=Button(mi_frame_botones, text="Leer")
+boton_leer=Button(mi_frame_botones, text="Leer", command=leer)
 boton_leer.grid(row=1, column=1, sticky="e", padx=10, pady=10)
 
-boton_actualizar=Button(mi_frame_botones, text="Actualizar")
+boton_actualizar=Button(mi_frame_botones, text="Actualizar", command=actualizar)
 boton_actualizar.grid(row=1, column=2, sticky="e", padx=10, pady=10)
 
-boton_borrar=Button(mi_frame_botones, text="Borrar")
+boton_borrar=Button(mi_frame_botones, text="Borrar", command=eliminar)
 boton_borrar.grid(row=1, column=3, sticky="e", padx=10, pady=10)
 
 
