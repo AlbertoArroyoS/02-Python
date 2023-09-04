@@ -4,17 +4,59 @@ import sqlite3
 
 root=Tk()
 
+#Creo conexion con la BBDD
+
+def conectar_BBDD():
+    mi_conexion=sqlite3.connect("NegocioUsuarios")
+
+    mi_cursor= mi_conexion.cursor()
+
+    try:
+        mi_cursor.execute()
+
+        messagebox.showinfo("BBDD","Conexion correcta a la BBDD")
+
+    except:
+        messagebox.showinfo("BBDD","No conectado a la BBDD")
+
+#Salir de la aplicacion
+
+def salir_aplicacion():
+
+    valor_salir=messagebox.askquestion("Salir", "¿Desea salir de la aplicacion?")
+
+    if valor_salir== "Yes":
+        root.destroy
+
+#Opcion de borrar, asocio cada entry a una variable de control
+
+mi_id=StringVar()
+mi_nombre=StringVar()
+mi_apellido=StringVar()
+mi_pass=StringVar()
+mi_direccion=StringVar()
+
+#Funcion que borra los cuadros de texto
+
+def limpiar_entry():
+    mi_id.set("")
+    mi_nombre.set("")
+    mi_apellido.set("")
+    mi_pass.set("")
+    mi_direccion.set("")
+    texto_comentario.delete(1.0, END)
+
 
 #Creo la barra desplegable del principio del programa
 barra_menu=Menu(root)
 root.config(menu=barra_menu, width=300, height=300)
 
 bbdd_menu=Menu(barra_menu, tearoff=0)
-bbdd_menu.add_command(label="Conectar")
-bbdd_menu.add_command(label="Salir")
+bbdd_menu.add_command(label="Conectar", command=conectar_BBDD)
+bbdd_menu.add_command(label="Salir",command=salir_aplicacion)
 
 borrar_menu=Menu(barra_menu, tearoff=0)
-borrar_menu.add_command(label="Borrar")
+borrar_menu.add_command(label="Borrar", command=limpiar_entry)
 
 crud_menu=Menu(barra_menu, tearoff=0)
 crud_menu.add_command(label="Crear")
@@ -37,20 +79,23 @@ mi_frame=Frame(root)
 mi_frame.pack()
 
 
-cuadro_id=Entry(mi_frame)
+
+#Agrego un segundo parametro al entry con las variables de control
+
+cuadro_id=Entry(mi_frame, textvariable=mi_id)
 cuadro_id.grid(row=0, column=1, padx=10, pady=10)
 
-cuadro_nombre=Entry(mi_frame)
+cuadro_nombre=Entry(mi_frame, textvariable=mi_nombre)
 cuadro_nombre.grid(row=1, column=1, padx=10, pady=10)
 
-cuadro_apellido=Entry(mi_frame)
+cuadro_apellido=Entry(mi_frame, textvariable=mi_apellido)
 cuadro_apellido.grid(row=2, column=1, padx=10, pady=10)
 
-cuadro_pass=Entry(mi_frame)
+cuadro_pass=Entry(mi_frame, textvariable=mi_pass)
 cuadro_pass.grid(row=3, column=1, padx=10, pady=10)
 cuadro_pass.config(show="*")
 
-cuadro_direccion=Entry(mi_frame)
+cuadro_direccion=Entry(mi_frame, textvariable=mi_direccion)
 cuadro_direccion.grid(row=4, column=1, padx=10, pady=10)
 
 texto_comentario=Text(mi_frame, width=16, height=5)
