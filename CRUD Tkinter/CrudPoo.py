@@ -97,7 +97,7 @@ class CrudPOO(Frame):
         self.bbdd_menu.add_command(label="Salir", command=lambda:salir_aplicacion(root))
 
         self.borrar_menu=Menu(self.barra_menu, tearoff=0)
-        self.borrar_menu.add_command(label="Limpiar campos", command=lambda:limpiar_entry(self.mi_id, self.mi_nombre,
+        self.borrar_menu.add_command(label="Limpiar campos", command=lambda:limpiar_entry(self.texto_comentario, self.mi_id, self.mi_nombre,
         self.mi_apellido,self.mi_pass,self.mi_direccion))
 
         self.crud_menu=Menu(self.barra_menu, tearoff=0)
