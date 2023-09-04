@@ -3,7 +3,7 @@ from tkinter import messagebox
 import sqlite3
 
 root=Tk()
-#HACER CONSULTAS PARAMETRICAS PAGINA 112
+
 
 #Creo conexion con la BBDD
 
