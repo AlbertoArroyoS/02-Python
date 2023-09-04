@@ -22,7 +22,11 @@ def conectar_BBDD():
                 COMENTARIOS VARCHAR(200)
             )
         ''')
+
         mi_conexion.commit()
+
         messagebox.showinfo("BBDD", "BBDD Creada correctamente")
+
     except sqlite3.OperationalError:
+        
         messagebox.showinfo("BBDD", "La BBDD ya existe")

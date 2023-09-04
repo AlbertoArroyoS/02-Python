@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import messagebox
 import sqlite3
 from Conexiones import *
+from Funcionalidad import *
 
 class CrudPOO(Frame):
 
@@ -93,7 +94,7 @@ class CrudPOO(Frame):
 
         self.bbdd_menu=Menu(self.barra_menu, tearoff=0)
         self.bbdd_menu.add_command(label="Conectar", command=conectar_BBDD)
-        self.bbdd_menu.add_command(label="Salir")
+        self.bbdd_menu.add_command(label="Salir", command=lambda:salir_aplicacion(root))
 
         self.borrar_menu=Menu(self.barra_menu, tearoff=0)
         self.borrar_menu.add_command(label="Limpiar campos")

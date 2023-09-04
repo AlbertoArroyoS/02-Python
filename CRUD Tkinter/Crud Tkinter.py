@@ -29,7 +29,7 @@ def salir_aplicacion():
     valor_salir=messagebox.askquestion("Salir", "¿Desea salir de la aplicacion?")
 
     if valor_salir== "Yes":
-        root.destroy
+        root.destroy()
 
 #Opcion de borrar, asocio cada entry a una variable de control
 
