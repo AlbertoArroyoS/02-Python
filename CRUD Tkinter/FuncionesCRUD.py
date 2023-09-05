@@ -83,3 +83,58 @@ def leer(Id, *args):
 
 
     mi_conexion.commit
+
+#Funcion para hacer el update, utiliza como criterio el Id y un numero indeterminado de parametros para que sea reutilizable
+
+def actualizar(Id,*args):
+
+    global nombre_BBDD
+
+    mi_conexion=sqlite3.connect(nombre_BBDD)
+
+    mi_cursor=mi_conexion.cursor()
+
+    '''mi_cursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE = '" + mi_nombre.get() +
+                        "','" + mi_apellido.get() + 
+                        "','" + mi_pass.get() +
+                        "','" + mi_direccion() + 
+                        "','" + texto_comentario.get("1.0", END)+ "')'")'''
+    
+    los_datos_lista=[]
+
+    # Hay que usar .get para los stringvar de los entry y string cuando viene de un text
+    for campo in args:
+        
+        if type(campo)==str:
+
+            los_datos_lista.append(campo) 
+
+        else:
+            los_datos_lista.append(campo.get())
+
+    #convertir lista a tupla para poder utilizar el execute
+
+    los_datos=tuple(los_datos_lista)
+
+    mi_cursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE=?, APELLIDO=?, PASSWORD=?, DIRECCION=?, COMENTARIOS=? WHERE ID=" + Id, (los_datos))
+
+    mi_conexion.commit()
+
+    messagebox.showinfo("CRUD", "Registro actualizado correctamente")
+
+#Funcion para borrar un registro de la BBDD, utilizando el Id pk para eliminar
+
+def eliminar(Id):
+
+    global nombre_BBDD
+
+
+    mi_conexion=sqlite3.connect(nombre_BBDD)
+
+    mi_cursor=mi_conexion.cursor()
+
+    mi_cursor.execute("DELETE FROM DATOSUSUARIOS WHERE ID=" + Id)
+
+    mi_conexion.commit()
+
+    messagebox.showinfo("CRUD", "Registro borrado correctamente")

@@ -105,12 +105,12 @@ class CrudPOO(Frame):
         self.crud_menu=Menu(self.barra_menu, tearoff=0)
         self.crud_menu.add_command(label="Crear", command=lambda:crear(self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario.get(1.0, END)))
         self.crud_menu.add_command(label="Leer", command=lambda:leer(self.mi_id.get(), self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario))
-        self.crud_menu.add_command(label="Actualizar")
-        self.crud_menu.add_command(label="Borrar")
+        self.crud_menu.add_command(label="Actualizar", command=lambda:actualizar(self.mi_id.get(),self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario.get(1.0, END)))
+        self.crud_menu.add_command(label="Borrar", command= lambda:eliminar(self.mi_id.get()))
 
         self.ayuda_menu=Menu(self.barra_menu, tearoff=0)
-        self.ayuda_menu.add_command(label="Licencia")
-        self.ayuda_menu.add_command(label="Acerca de")
+        self.ayuda_menu.add_command(label="Licencia", command=lambda:messagebox.showinfo("Licencia", "BBDD Tkinter"))
+        self.ayuda_menu.add_command(label="Acerca de", command=lambda:messagebox.showinfo("Acerca de", "Prueba Aplicacion CRUD Alberto Arroyo"))
 
         self.barra_menu.add_cascade(label="BBDD", menu=self.bbdd_menu)
         self.barra_menu.add_cascade(label="Borrar", menu=self.borrar_menu)
@@ -125,10 +125,10 @@ class CrudPOO(Frame):
         self.boton_leer=Button(self.mi_frame_botones, text="Leer", command=lambda:leer(self.mi_id.get(), self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario))
         self.boton_leer.grid(row=1, column=1, sticky="e", padx=10, pady=10)
 
-        self.boton_actualizar=Button(self.mi_frame_botones, text="Actualizar")
+        self.boton_actualizar=Button(self.mi_frame_botones, text="Actualizar", command=lambda:actualizar(self.mi_id.get(),self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario.get(1.0, END)))
         self.boton_actualizar.grid(row=1, column=2, sticky="e", padx=10, pady=10)
 
-        self.boton_borrar=Button(self.mi_frame_botones, text="Borrar")
+        self.boton_borrar=Button(self.mi_frame_botones, text="Borrar", command= lambda:eliminar(self.mi_id.get()))
         self.boton_borrar.grid(row=1, column=3, sticky="e", padx=10, pady=10)
 
 
