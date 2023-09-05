@@ -14,7 +14,10 @@ def almacena(nom_BD):
     global nombre_BBDD
     nombre_BBDD=nom_BD
 
+#Funcion para crear una BBDD, consultas parametricas
+
 def crear(*args):
+
     mi_conexion=sqlite3.connect(nombre_BBDD)
 
     mi_cursor=mi_conexion.cursor()
@@ -49,3 +52,34 @@ def crear(*args):
     mi_conexion.commit()
 
     messagebox.showinfo("CRUD", "Registro insertado correctamente")
+
+#Funcion para leer Id que introduzcamos
+
+def leer(Id, *args):
+
+    global nombre_BBDD
+
+    mi_conexion=sqlite3.connect(nombre_BBDD)
+
+    mi_cursor=mi_conexion.cursor()
+
+    mi_cursor.execute("SELECT * FROM DATOSUSUARIOS WHERE ID=" + Id)
+
+    #Almacenamos el recordset en el array
+
+    datos_usuario=mi_cursor.fetchall()
+
+    #recorrer cuantos args hay, y por cada campo rescato una posicion del array, desde la posicion 1 ya que la 0 corresponde al id
+    posicion_array=1
+
+    for campo in args:
+        for valor_campo in datos_usuario:
+            if type(campo) == Text: 
+                campo.insert(1.0, valor_campo[posicion_array]) 
+
+            else:
+                campo.set(valor_campo[posicion_array])
+            posicion_array +=1
+
+
+    mi_conexion.commit

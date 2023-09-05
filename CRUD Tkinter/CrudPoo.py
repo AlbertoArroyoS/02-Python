@@ -13,6 +13,7 @@ class CrudPOO(Frame):
 
     def __init__(self, raiz):
 
+        raiz.title("Gestor BBDD Alberto")
 
         #Variables de control que guardan los datos de cada entry
 
@@ -103,7 +104,7 @@ class CrudPOO(Frame):
 
         self.crud_menu=Menu(self.barra_menu, tearoff=0)
         self.crud_menu.add_command(label="Crear", command=lambda:crear(self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario.get(1.0, END)))
-        self.crud_menu.add_command(label="Leer")
+        self.crud_menu.add_command(label="Leer", command=lambda:leer(self.mi_id.get(), self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario))
         self.crud_menu.add_command(label="Actualizar")
         self.crud_menu.add_command(label="Borrar")
 
@@ -121,7 +122,7 @@ class CrudPOO(Frame):
         self.boton_crear=Button(self.mi_frame_botones, text="Crear", command=lambda:crear(self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario.get(1.0, END)))
         self.boton_crear.grid(row=1, column=0, sticky="e", padx=10, pady=10)
 
-        self.boton_leer=Button(self.mi_frame_botones, text="Leer")
+        self.boton_leer=Button(self.mi_frame_botones, text="Leer", command=lambda:leer(self.mi_id.get(), self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario))
         self.boton_leer.grid(row=1, column=1, sticky="e", padx=10, pady=10)
 
         self.boton_actualizar=Button(self.mi_frame_botones, text="Actualizar")

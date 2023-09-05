@@ -80,7 +80,7 @@ def leer():
 
     mi_cursor=mi_conexion.cursor()
 
-    mi_cursor.execute("SELECT + FROM DATOSUSUARIOS WHERE ID=" + mi_id.get())
+    mi_cursor.execute("SELECT * FROM DATOSUSUARIOS WHERE ID=" + mi_id.get())
 
     datos_usuario=mi_cursor.fetchall()
 
