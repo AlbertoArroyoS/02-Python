@@ -131,6 +131,9 @@ class CrudPOO(Frame):
         self.boton_borrar=Button(self.mi_frame_botones, text="Borrar", command= lambda:eliminar(self.mi_id.get()))
         self.boton_borrar.grid(row=1, column=3, sticky="e", padx=10, pady=10)
 
+        self.boton_borrar=Button(self.mi_frame_botones, text="Limpiar campos", command=lambda:limpiar_entry(self.texto_comentario, self.mi_id, self.mi_nombre,
+        self.mi_apellido,self.mi_pass,self.mi_direccion))
+        self.boton_borrar.grid(row=1, column=4, sticky="e", padx=10, pady=10)
 
 
 
