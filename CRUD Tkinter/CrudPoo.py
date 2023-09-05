@@ -1,4 +1,4 @@
-#2-CRUD basado en el original Crud Tkinter.py orientado a objetos
+#2-CRUD orientado a objetos, adaptado del basico inicial Crud Tkinter.py 
 
 from tkinter import *
 from tkinter import messagebox
