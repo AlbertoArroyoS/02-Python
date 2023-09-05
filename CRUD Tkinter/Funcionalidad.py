@@ -11,8 +11,14 @@ def salir_aplicacion(raiz):
         raiz.destroy()
 
 
-def limpiar_entry(cuadro_texto, *args):
+def limpiar_entry(*args):
+    
     for campo in args:
-        campo.set("")
 
-    cuadro_texto.delete(1.0, END)
+        if type(campo) == Text:
+            campo.delete(1.0, END)
+
+        else:
+
+            campo.set("")
+

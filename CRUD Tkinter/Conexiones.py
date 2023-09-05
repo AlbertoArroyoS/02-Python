@@ -13,7 +13,7 @@ def conectar_BBDD():
 
     try:
         mi_cursor.execute('''
-            CREATE TABLE datosusuarios (
+            CREATE TABLE DATOSUSUARIOS (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 NOMBRE VARCHAR(50),
                 APELLIDO VARCHAR(80),

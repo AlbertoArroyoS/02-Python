@@ -5,6 +5,7 @@ from tkinter import messagebox
 import sqlite3
 from Conexiones import *
 from Funcionalidad import *
+from FuncionesCRUD import *
 
 class CrudPOO(Frame):
 
@@ -101,7 +102,7 @@ class CrudPOO(Frame):
         self.mi_apellido,self.mi_pass,self.mi_direccion))
 
         self.crud_menu=Menu(self.barra_menu, tearoff=0)
-        self.crud_menu.add_command(label="Crear")
+        self.crud_menu.add_command(label="Crear", command=lambda:crear(self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario.get(1.0, END)))
         self.crud_menu.add_command(label="Leer")
         self.crud_menu.add_command(label="Actualizar")
         self.crud_menu.add_command(label="Borrar")
@@ -117,7 +118,7 @@ class CrudPOO(Frame):
 
     def ubicar_botones(self):
 
-        self.boton_crear=Button(self.mi_frame_botones, text="Crear")
+        self.boton_crear=Button(self.mi_frame_botones, text="Crear", command=lambda:crear(self.mi_nombre, self.mi_apellido, self.mi_pass, self.mi_direccion,self.texto_comentario.get(1.0, END)))
         self.boton_crear.grid(row=1, column=0, sticky="e", padx=10, pady=10)
 
         self.boton_leer=Button(self.mi_frame_botones, text="Leer")
