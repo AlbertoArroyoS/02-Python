@@ -3,8 +3,19 @@ from tkinter import messagebox
 from tkinter import simpledialog
 import sqlite3
 
+#Variable para que se guarde el nombre de la BBDD a la que hago conexion
+
+nombre_BBDD=""
+
+#funcion para almacenar el nombre de la funcion en la variable
+#Crear la variable global para utilizarlo en las funciones CRUD
+
+def almacena(nom_BD):
+    global nombre_BBDD
+    nombre_BBDD=nom_BD
+
 def crear(*args):
-    mi_conexion=sqlite3.connect("Prueba3")
+    mi_conexion=sqlite3.connect(nombre_BBDD)
 
     mi_cursor=mi_conexion.cursor()
 

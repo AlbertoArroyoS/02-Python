@@ -2,13 +2,18 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import simpledialog
 import sqlite3
+from FuncionesCRUD import *
 
 #Creo conexion con la BBDD
 
 def conectar_BBDD():
+
     nombre_BBDD = simpledialog.askstring("BBDD", "Indroduzca el nombre de la BBDD")
 
+    #Llamar a la funcion almacena de FuncionesCrud para guardar ese nombre en la variable global
+    almacena(nombre_BBDD)
     mi_conexion = sqlite3.connect(nombre_BBDD)
+
     mi_cursor = mi_conexion.cursor()
 
     try:
