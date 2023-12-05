@@ -1,15 +1,9 @@
-**# Proyectos de Python**
+# **Proyectos de Python**
 
-1- Crear una calculadora sencilla con Tkinter
+    1- Calculadora con Tkinter
 
-2- Crear CRUD de forma que me pueda conectar a una BBDD y en caso de que no exista el nombre crearla, con los siguientes datos:
+    2- CRUD con conexion a BBDD
 
-Id, nombre, apellido, contraseña (oculta en la app), dirección y comentarios
+    3- Pandas, Numpy y Matplotlib
 
-Podremos crear usuarios, leer sus datos, actualizarlos y borrarlo
 
-La app podrá limpiar los campos
-
-![](img/Aspose.Words.0abe8922-daa0-4825-870b-a48d43a79846.001.png)
-
-![](img/Aspose.Words.0abe8922-daa0-4825-870b-a48d43a79846.002.png)
